@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speed Wheels</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Georgia, serif;
+    }
+    
+    header {
+      background: linear-gradient(to top, #ffffff 0%, #f9dd94 100%);
+      color: #000000;
+      padding: 35px;
+      margin: -10px;
+    }
+    
+    #name {
+      margin: -1px;
+      margin-bottom: -5px;
+    }
+    
+    #tagline {
+      color: rgba(0, 0, 0, 0.6);
+      padding: 9px;
+      margin: -10px;
+    }
+    
+    #logo {
+      float: left;
+      position: absolute;
+      margin-top: -65px;
+      left: 320px;
+    }
+    
+    .button-head {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      top: 15px;
+      right: 300px;
+    }
+    
+    .options {
+      padding: 10px 20px;
+      margin: 20px;
+      border-radius: 30px;
+      background-color: #fff;
+      color: #000000;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    
+    #call {
+      position: absolute;
+      top: 15px;
+      right: 50px;
+    }
+    
+    #phone-number {
+      position: absolute;
+      top: 40px;
+      right: 63px;
+    }
+    
+    #info {
+      text-align: center;
+      margin: 20px;
+      margin-bottom: 20px;
+    }
+    
+    #car {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      -moz-box-shadow: 0 0 10px #000;
+      -webkit-box-shadow: 0 0 10px #000;
+      box-shadow: 0 0 10px #000;
+      margin-bottom: 10px;
+    }
+    
+    .buttons-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .button {
+      padding: 20px 20px;
+      margin: 20px;
+      border-radius: 30px;
+      background-color: #f9dd94;
+      color: #000000;
+      font-size: 23px;
+      cursor: pointer;
+    }
+    
+    .arrow-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 20px;
+    }
+    
+    .arrow {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 10px 0 10px 15px;
+      border-color: transparent transparent transparent #000000;
+      margin: 5px;
+    }
+    
+    .table_cars {
+      border-collapse: collapse;
+      border-left: 3px solid #f9dd94;
+      border-right: 3px solid #f9dd94;
+      border-bottom: 3px solid #f9dd94;
+      font-family: Georgia, serif;
+      width: 50%;
+      margin: auto;
+    }
+    
+    .table_cars caption {
+      background: #f9dd94;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      padding: 10px;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .3);
+      color: white;
+      font-family: Georgia, serif;
+      text-shadow: gray 0 -2px;
+      font-style: normal;
+      font-size: 26px;
+      text-align: center;
+    }
+    
+    .table_cars td,
+    .table_cars th {
+      padding: 8px;
+    }
+    
+    .table_cars th {
+      text-align: left;
+      font-size: 18px;
+    }
+    
+    .table_cars tr:nth-child(2n) {
+      background: #E5E5E5;
+    }
+    
+    .table_cars td:last-of-type {
+      text-align: center;
+    }
+    
+    .table_cars a {
+      display: inline-block;
+      padding: 13px 50px;
+      background: #f9dd94;
+      position: relative;
+      cursor: pointer;
+      border-radius: 30px;
+    }
+    
+    .list {
+      display: grid;
+      place-items: center;
+      counter-reset: li;
+      list-style: none;
+      padding: 0;
+    }
+    
+    .list h2 {
+      text-align: center;
+      margin: 20px;
+      margin-bottom: 10px;
+    }
+    
+    .list li {
+      padding: 8px 16px;
+      border: none;
+      width: 600px;
+      text-align: left;
+    }
+    
+    .list a {
+      position: relative;
+      display: block;
+      padding: .4em .4em .4em .8em;
+      margin: .5em 0 .5em 2.5em;
+      background: #D3D4DA;
+      color: #444;
+      text-decoration: none;
+      transition: all .3s ease-out;
+    }
+    
+    .list a:hover {
+      background: #DCDDE1;
+    }
+    
+    .list a:before {
+      content: counter(li);
+      counter-increment: li;
+      position: absolute;
+      left: -2.5em;
+      top: 50%;
+      margin-top: -1em;
+      background: #f9dd94;
+      height: 2em;
+      width: 2em;
+      line-height: 2em;
+      text-align: center;
+      font-weight: bold;
+    }
+    
+    .list a:after {
+      position: absolute;
+      content: "";
+      border: .5em solid transparent;
+      left: -1em;
+      top: 40%;
+      margin-top: -.5em;
+      transition: all .3s ease-out;
+    }
+    
+    .list a:hover:after {
+      left: -.5em;
+      border-left-color: #f9dd94;
+    }
+    
+    .booking h2 {
+      text-align: center;
+      margin: 20px;
+      margin-bottom: 10px;
+    }
+    
+    .booking fieldset {
+      padding: 10px;
+      background: linear-gradient(to bottom, #ffffff 20%, #f9dd94 70%);
+      margin: auto;
+      width: 30%;
+    }
+    
+    .booking label {
+      width: 100px;
+      display: inline-block;
+      vertical-align: top;
+      margin: 9px;
+      margin-top: 10px;
+    }
+    
+    .booking input {
+      width: 250px;
+      margin-top: 10px;
+    }
+    
+    #name {
+      margin-top: 10px;
+    }
+    
+    .booking input[type=submit] {
+      width: 30%;
+      padding: 5px 5px;
+      border-radius: 60px;
+      background-color: #fff;
+      color: #000000;
+      font-size: 15px;
+      cursor: pointer;
+      margin: 0 auto;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div>
+      <h1 id="name">SPEED WHEELS</h1>
+      <p id="tagline">Ваша зручність - наш пріоритет</p>
+      <img id="logo" src="images/logo.png" alt="logo">
+    </div>
+    <div class="button-head">
+      <button class="options">НАШІ АВТО</button>
+      <button class="options">БРОНЮЮ</button>
+      <button class="options">КОНТАКТИ</button>
+    </div>
+    <div>
+      <p id="phone-number">+380 (73) 298 99 00</p>
+      <h3 id="call">Телефонуй 24/7</h3>
+    </div>
+  </header>
+
+  <div>
+    <h2 id="info">Обирайте надійний та якісний авто-прокат для своєї наступної подорожі з нами</h2>
+    <p align="center"><a href="logic.html">Бізнес логіка нашого сайту!</a></p>
+    <img id="car" src="images/car.jpg" alt="car">
+  </div>
+
+  <div class="buttons-container">
+    <button class="button">ОБИРАЙ</button>
+    <div class="arrow-container">
+      <div class="arrow"></div>
+    </div>
+    <button class="button">БРОНЮЙ</button>
+    <div class="arrow-container">
+      <div class="arrow"></div>
+    </div>
+    <button class="button">МАНДРУЙ</button>
+  </div>
+
+  <table class="table_cars">
+    <caption>Найпопулярніші варіанти авто</caption>
+    <tr>
+      <th>Модель</th>
+      <th colspan="2">Ціна</th>
+    </tr>
+    <tr>
+      <td>Toyota Camry</td>
+      <td>2000₴</td>
+      <td><img src="images/Toyota Camry.png" alt="Toyota Camry" height="90" width="200"></td>
+    </tr>
+    <tr>
+      <td>Honda CR-V</td>
+      <td>2500₴</td>
+      <td><img src="images/Honda.png" alt="Honda CR-V" height="100" width="200"></td>
+    </tr>
+    <tr>
+      <td>Nissan Altima</td>
+      <td>1800₴</td>
+      <td><img src="images/Nissan Altima.png" alt="Nissan Altima" height="100" width="200"></td>
+    </tr>
+    <tr>
+      <td>Hyundai Sonata</td>
+      <td>1400₴</td>
+      <td><img src="images/Hyundai Sonata.png" alt="Hyundai Sonata" height="110" width="200"></td>
+    </tr>
+  </table>
+
+  <ul class="list">
+    <h2>Наші послуги для Вашого комфорту </h2>
+    <li class=""><a href="#">Допоможемо підібрати ідеальне авто для вашого відпочинку.</a></li>
+    <li class=""><a href="#">Додаткові послуги, такі як: навігація та авто-крісла.</a></li>
+    <li class=""><a href="#">Оформлюемо всі види страхування для вашої безпеки.</a></li>
+    <li class=""><a href="#">Доставляемо автомобіль у зручне для вас місце.</a></li>
+    <li class=""><a href="#">Консультації з власним менеджером 24/7.</a></li>
+  </ul>
+
+  <form class="booking">
+    <h2>Забронювати краще авто</h2>
+    <fieldset>
+      <label for="name">Ім'я та Призвище</label>
+      <input id="name">
+      <br>
+      <label for="telephone">Номер телефону</label>
+      <input id="telephone">
+      <br>
+      <label for="email">Електрона адреса</label>
+      <input id="email">
+      <br>
+      <label for="date">Дата бронювання</label>
+      <input id="date">
+      <br>
+      <p>
+        <input type="submit" value="Надіслати">
+      </p>
+    </fieldset>
+  </form>
+
+</body>
+
+</html>
